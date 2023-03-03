@@ -1,0 +1,24 @@
+class Solution {
+public:
+    int lengthOfLIS(vector<int>& nums) {
+        int n = nums.size();
+        vector<int> tails(n, 0);
+        int maxLength = 0;
+        for (int i = 0; i < n; i++) {
+            int l = 0, r = maxLength;
+            while (l < r) {
+                int mid = l + (r - l) / 2;
+                if (tails[mid] < nums[i]) {
+                    l = mid + 1;
+                } else {
+                    r = mid;
+                }
+            }
+            tails[l] = nums[i];
+            if (l == maxLength) {
+                maxLength++;
+            }
+        }
+        return maxLength;
+    }
+};
