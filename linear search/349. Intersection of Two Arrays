@@ -1,0 +1,20 @@
+class Solution {
+public:
+    vector<int> intersection(vector<int>& nums1, vector<int>& nums2) {
+         unordered_set<int> nums1Set(nums1.begin(), nums1.end());
+        int n=nums1Set.size();
+        int k=nums2.size();
+         vector <int> res;
+         auto it = nums1Set.begin();
+         for (int i= 0;i<n;i++){
+             for (int j= 0;j<k;j++){
+                 if(*it==nums2[j]){
+                    res.push_back(*it);
+                    break ;
+                 }
+             }
+             it++;
+         }
+      return(res);
+    }
+};
